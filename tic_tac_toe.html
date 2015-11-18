@@ -5,38 +5,64 @@
 	<title>Крестики Нолики</title>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 	<link rel="stylesheet" href="tic_tac_toe.css" type="text/css" />
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="tic_tac_toe.js">
 </script>
 
 </head>
 <body>
-	<h3>
-		Ходит <span id="player_name"></span> (<span id="player_mark"></span>)
-	</h3>
+	<div class="wrapper_form">
+		<form class="navbar-form">
+			<fieldset class="form-group">
+			    <label for="width">Ширина поля</label>
+			    <input type="number" class="form-control" id="width" placeholder="Ширина поля">
+			</fieldset>
+			<form class="navbar-form pull-left">
+				<fieldset class="form-group">
+			    <label for="height">Высота поля</label>
+			    <input type="number" class="form-control" id="height" placeholder="Высота поля">
+			</fieldset>
 
-	<h4>Счет</h4>
+			<form class="navbar-form pull-left">
+				<fieldset class="form-group">
+			    <label for="name1">Имя первого игрока</label>
+			    <input type="text" class="form-control" id="name1" placeholder="Имя первого игрока">
+			</fieldset>
+			<fieldset class="form-group">
+			    <label for="name2">Имя второго игрока</label>
+			    <input type="text" class="form-control" id="name2" placeholder="Имя второго игрока">
+			</fieldset>
+			<button type="submit" class="btn pull-right">Начать игру</button>
+		</form>
+	</div>
+	<div class="wrapper_main">
+		<h3>
+			Ходит <span id="player_name"></span> (<span id="player_mark"></span>)
+		</h3>
 
-	<table class="score">
-		<tr>
-			<th>Игрок 1</th>
-			<th>Игрок 2</th>
-		</tr>
-		<tr>
-			<td id="player1_wins">0</td>
-			<td id="player2_wins">0</td>
-		</tr>
-	</table>
-	<h3 id="winner" class="end_game">
-		Победил <span id="winner_name"></span>
-	</h3>
-	<div class="wrapper_game">
-		<div id="game">
+		<h4>Счет</h4>
+		<table class="score">
+			<tr>
+				<th>Игрок 1</th>
+				<th>Игрок 2</th>
+			</tr>
+			<tr>
+				<td id="player1_wins">0</td>
+				<td id="player2_wins">0</td>
+			</tr>
+		</table>
+		<h3 id="winner" class="end_game">
+			Победил <span id="winner_name"></span>
+		</h3>
+		<div class="wrapper_game">
+			<div id="game">
+			</div>
 		</div>
+		<div id="ask_restart" class="end_game">
+			Новая игра? <a href="#" id="restart_game">Да</a>
+		</div>
+		<div id="restart_game">Перегрузить игру</div>
 	</div>
-	<div id="ask_restart" class="end_game">
-		Новая игра? <a href="#" id="restart_game">Да</a>
-	</div>
-	<div id="restart_game">Перегрузить игру</div>
 </body>
 </html>

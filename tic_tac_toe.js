@@ -41,8 +41,8 @@ function disable(e){
 		.unbind("mouseover")
 		.unbind("mouseout");
 };
-function restart(e){
-	e.preventDefault();
+function restart(){
+	console.log('789');
 	current_player = 0;
 	TicTacToe();
 	return false;
@@ -92,9 +92,12 @@ function checkWinner(cell){
 				break;
 			}
 		}
+
+		refreshCheck(index_cell);
+		
 		//Vertical
 		var step = 0;
-		for (step = index_cell + num_of_rows; step <= index_cell + 5 * num_of_rows; step += num_of_rows){
+		for (step = index_cell + num_of_rows; step <= 3000; step += num_of_rows){
 		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
 				cell_marked.push($('.cell[ind="'+step+'"]'));
 			} else {
@@ -102,20 +105,54 @@ function checkWinner(cell){
 			}
 		}
 		var step = 0;
-		for (step = index_cell - num_of_rows; step >= index_cell - 5 * num_of_rows; step -= num_of_rows){
+		for (step = index_cell - num_of_rows; step >= 0; step -= num_of_rows){
 		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
 				cell_marked.push($('.cell[ind="'+step+'"]'));
 			} else {
 				break;
 			}
 		}
+
+		refreshCheck(index_cell);
+
 		//diagonal
+		//bottom left
 		var step = 0,
 			d = 1;
-		for (step = index_cell + num_of_rows-1; step <= 2000; step += num_of_rows - d){
-			d = d + 1;
-			console.log(d);
-			console.log(step);
+		for (step = index_cell + num_of_rows-1; step <= 3000; step += num_of_rows - d){
+		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
+				cell_marked.push($('.cell[ind="'+step+'"]'));
+			} else {
+				break;
+			}
+		}
+		//top right
+		var step = 0,
+			d = 1;
+		for (step = index_cell - num_of_rows+1; step <= 3000; step -= num_of_rows - d){
+		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
+				cell_marked.push($('.cell[ind="'+step+'"]'));
+			} else {
+				break;
+			}
+		}
+
+		refreshCheck(index_cell);
+
+		//top left
+		var step = 0,
+			d = 1;
+		for (step = index_cell - num_of_rows-1; step >= 0; step -= num_of_rows + d){
+		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
+				cell_marked.push($('.cell[ind="'+step+'"]'));
+			} else {
+				break;
+			}
+		}
+		//bottom right
+		var step = 0,
+			d = 1;
+		for (step = index_cell + num_of_rows+1; step <= 3000; step += num_of_rows + d){
 		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
 				cell_marked.push($('.cell[ind="'+step+'"]'));
 			} else {
@@ -124,6 +161,7 @@ function checkWinner(cell){
 		}
 
 		if ( cell_marked.length == num_win ) win = true;
+		
 	}
 	if ( win ){
 		disable();
@@ -137,8 +175,15 @@ function checkWinner(cell){
 	}
 	return win;
 };
-
+function refreshCheck(index_cell){
+	win = false;
+	if ( cell_marked.length == num_win ) win = true;
+	if ( !win ){
+		cell_marked = new Array();
+		cell_marked.push($('.cell[ind="'+index_cell+'"]'));
+	}
+}
 $(document).ready(function(){
-	$("#restart_game").bind("click", restart);
+	$(document).on("click", "#restart_game", restart);
 	TicTacToe();
 });

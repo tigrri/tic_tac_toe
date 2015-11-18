@@ -53,4 +53,27 @@
 	clear:both;
 	content:'';
 	display: table;
-};
+}
+#restart_game{
+	cursor: pointer;
+}
+.wrapper_main{
+	display: none;
+}
+.navbar-form{
+	width:100%;
+	max-width: 400px;
+	margin:0 auto;
+	padding:20px;
+}
+.navbar-form input[type="number"],
+.navbar-form input[type="text"],
+.navbar-form input {
+	width:100%;
+	height:30px;
+	-moz-box-sizing: border-box; /* Для Firefox */  
+    box-sizing: border-box; /* Ширина блока с полями */
+}
+.form-group{
+	margin-bottom: 20px;
+}
