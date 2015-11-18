@@ -76,6 +76,7 @@ function checkWinner(cell){
 	{
 		cell_marked = new Array();
 		cell_marked.push($('.cell[ind="'+index_cell+'"]'));
+		//horizontal
 		for (step = index_cell+1; step <= index_cell+5; ++step){
 			if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
 				cell_marked.push($('.cell[ind="'+step+'"]'));
@@ -91,6 +92,7 @@ function checkWinner(cell){
 				break;
 			}
 		}
+		//Vertical
 		var step = 0;
 		for (step = index_cell + num_of_rows; step <= index_cell + 5 * num_of_rows; step += num_of_rows){
 		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
@@ -107,6 +109,20 @@ function checkWinner(cell){
 				break;
 			}
 		}
+		//diagonal
+		var step = 0,
+			d = 1;
+		for (step = index_cell + num_of_rows-1; step <= 2000; step += num_of_rows - d){
+			d = d + 1;
+			console.log(d);
+			console.log(step);
+		    if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
+				cell_marked.push($('.cell[ind="'+step+'"]'));
+			} else {
+				break;
+			}
+		}
+
 		if ( cell_marked.length == num_win ) win = true;
 	}
 	if ( win ){
