@@ -69,8 +69,7 @@ function checkWinner(cell){
 		marked_cells = $("#game ."+current_class),
 		win = false,
 		step = 0,
-		stepPrev = 0,
-		index_cell_attr = cell.attr("ind")
+		index_cell_attr = cell.attr("ind"),
 		index_cell = parseInt(index_cell_attr);
 	
 	if ( marked_cells.length >= 1 )
@@ -84,6 +83,16 @@ function checkWinner(cell){
 				break;
 			}
 		}
+		var step = 0;
+		for (step = index_cell-1; step >= index_cell-5; --step){
+			console.log(index_cell);
+			if ( $('.cell[ind="'+step+'"]').hasClass(current_class) ){
+				cell_marked.push($('.cell[ind="'+step+'"]'));
+			} else {
+				break;
+			}
+		}
+		var step = 0;
 		if ( cell_marked.length == num_win ) win = true;
 	}
 	if ( win ){
