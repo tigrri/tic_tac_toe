@@ -23,17 +23,7 @@
 			    <label for="height">Высота поля</label>
 			    <input type="number" class="form-control" id="height" placeholder="Высота поля">
 			</fieldset>
-
-			<form class="navbar-form pull-left">
-				<fieldset class="form-group">
-			    <label for="name1">Имя первого игрока</label>
-			    <input type="text" class="form-control" id="name1" placeholder="Имя первого игрока">
-			</fieldset>
-			<fieldset class="form-group">
-			    <label for="name2">Имя второго игрока</label>
-			    <input type="text" class="form-control" id="name2" placeholder="Имя второго игрока">
-			</fieldset>
-			<button type="submit" class="btn pull-right">Начать игру</button>
+			<button type="submit" id="initGame" class="btn pull-right">Начать игру</button>
 		</form>
 	</div>
 	<div class="wrapper_main">
@@ -62,7 +52,7 @@
 		<div id="ask_restart" class="end_game">
 			Новая игра? <a href="#" id="restart_game">Да</a>
 		</div>
-		<div id="restart_game">Перегрузить игру</div>
+		<div id="disable_game">Перегрузить игру</div>
 	</div>
 </body>
 </html>

@@ -54,7 +54,7 @@
 	content:'';
 	display: table;
 }
-#restart_game{
+#disable_game{
 	cursor: pointer;
 }
 .wrapper_main{
@@ -76,4 +76,12 @@
 }
 .form-group{
 	margin-bottom: 20px;
+}
+.wrapper_form input.errorlab {
+    background: #ffe4e4;
+    border: 1px solid #ff0000;
+}
+.wrapper_form input.truelab{
+	background: #e2ffe3;
+    border: 1px solid #2ad90e;
 }
